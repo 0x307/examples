@@ -1,0 +1,19 @@
+[package]
+name       = "ex04-x402-vault-micropayments"
+version    = "0.1.0"
+edition.workspace    = true
+license.workspace    = true
+repository.workspace = true
+publish              = false
+
+[dependencies]
+aethel-vault = { workspace = true }
+aethel-core  = { workspace = true }
+rand         = { workspace = true }
+
+# NOT dependencies of aethel-vault. The vault deliberately ships zero
+# secp256k1 code — it builds the EIP-712 digest and packages whatever the
+# caller's signer returns. Wiring a real ECDSA key is this example's job,
+# and yours.
+k256 = { version = "0.13", features = ["ecdsa"] }
+sha3 = "0.10"

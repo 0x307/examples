@@ -1,0 +1,28 @@
+[workspace]
+resolver = "2"
+members = [
+    "01-pqc-digital-signatures",
+    "02-pqc-key-exchange",
+    "03-anonymous-agent-identity",
+    "04-x402-vault-micropayments",
+]
+
+[workspace.package]
+edition    = "2021"
+license    = "MIT OR Apache-2.0"
+repository = "https://github.com/0x307/examples"
+publish    = false
+
+[workspace.dependencies]
+# Every example pins the exact published version a reader gets from
+# `cargo add`. If a release breaks an example, CI fails here first.
+pqc-sig      = "0.4.0"
+pqc-kem      = "0.2.0"
+aethel-sdk   = "0.8.0"
+aethel-vault = "0.2.0"
+rand         = "0.8"
+
+# 0.6, NOT 0.7 - see 04-x402-vault-micropayments. aethel-vault 0.2.0 pins
+# aethel-core "0.6", so pulling 0.7 alongside it puts two incompatible
+# copies in the graph and `Identity` stops unifying.
+aethel-core  = "0.6.1"

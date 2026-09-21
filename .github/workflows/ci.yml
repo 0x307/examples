@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Weekly, against the latest published crates. An example that silently
+    # stops working after a release should fail here, not in someone's
+    # terminal.
+    - cron: '0 13 * * 1'
+
+jobs:
+  run-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Check formatting
+        run: cargo fmt --all --check
+
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+      - name: Build
+        run: cargo build --workspace --locked
+
+      # Each example asserts its own failure cases, so a successful exit is
+      # a real signal rather than a print statement.
+      - name: Run every example
+        run: |
+          cargo run -p ex01-pqc-digital-signatures
+          cargo run -p ex02-pqc-key-exchange
+          cargo run -p ex03-anonymous-agent-identity
+          cargo run -p ex04-x402-vault-micropayments
