@@ -36,11 +36,9 @@ decoders. Do not use it as an interop default.
 enforces your spend policy; you supply the secp256k1 signer. Example 04
 implements one with `k256` so it actually runs.
 
-**Known version constraint:** `aethel-vault 0.2.0` depends on
-`aethel-core "0.6"` while the latest `aethel-core` is `0.7.0`. Using both at
-their newest versions puts two incompatible copies in the dependency graph.
-Pin `aethel-core = "0.6.1"` alongside the vault. Example 04 documents this
-inline.
+**Keep `aethel-core` and `aethel-vault` in step.** `Identity` crosses between
+them, so they must share one `aethel-core`: today that is `aethel-core 0.7`
+with `aethel-vault 0.3`.
 
 ## Links
 

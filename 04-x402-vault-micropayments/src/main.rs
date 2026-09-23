@@ -18,13 +18,12 @@
 //!   authorized. That record is the post-quantum audit trail: it survives
 //!   the day secp256k1 does not.
 //!
-//! Two rough edges you will hit, both real as of 2026-09-21:
+//! Keep `aethel-core` on the version `aethel-vault` uses (0.7 for vault 0.3):
+//! `Identity` crosses between the two crates, and two copies in one graph
+//! fail with "expected `Identity`, found `Identity`".
 //!
-//! * `aethel-vault 0.2.0` depends on `aethel-core "0.6"`, but the latest
-//!   published `aethel-core` is `0.7.0`. Adding both at their newest
-//!   versions puts two incompatible copies of the crate in one graph and
-//!   produces an "expected `Identity`, found `Identity`" error. Pin
-//!   `aethel-core = "0.6.1"` until the vault catches up.
+//! One rough edge, real as of 2026-09-23:
+//!
 //! * Neither `VaultError` nor `IdentityError` implements
 //!   `std::error::Error`, so `?` into `Box<dyn Error>` does not compile.
 //!   This example converts with `map_err`.
