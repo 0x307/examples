@@ -35,3 +35,8 @@ jobs:
           cargo run -p ex02-pqc-key-exchange
           cargo run -p ex03-anonymous-agent-identity
           cargo run -p ex04-x402-vault-micropayments
+          cargo run -p ex05-x402-seller-identity
+
+      # Example 05 also keeps its full set of refusal cases as tests.
+      - name: Test
+        run: cargo test --workspace --locked

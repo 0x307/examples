@@ -21,6 +21,7 @@ cargo run -p ex01-pqc-digital-signatures
 | [02](02-pqc-key-exchange) | `pqc-kem` | ML-KEM-768 (FIPS 203) encapsulation, and hybrid X25519 + ML-KEM for migration |
 | [03](03-anonymous-agent-identity) | `aethel-sdk` | Per-context identity projection — unlinkable identifiers instead of one static DID |
 | [04](04-x402-vault-micropayments) | `aethel-vault` | Policy-gated EIP-3009 / x402 USDC authorization with a real `k256` signer |
+| [05](05-x402-seller-identity) | `aethel-auth` | An x402-axum seller that checks the agent's delegation from its owner, and refuses before it serves or charges |
 
 ## What these crates are and are not
 
@@ -47,11 +48,13 @@ with `aethel-vault 0.3`.
   [aethel-core](https://crates.io/crates/aethel-core) ·
   [aethel-sdk](https://crates.io/crates/aethel-sdk) ·
   [aethel-vault](https://crates.io/crates/aethel-vault) ·
+  [aethel-auth](https://crates.io/crates/aethel-auth) ·
   [pqc-privacy](https://crates.io/crates/pqc-privacy)
 * API docs: [docs.rs/pqc-sig](https://docs.rs/pqc-sig) ·
   [docs.rs/pqc-kem](https://docs.rs/pqc-kem) ·
   [docs.rs/aethel-sdk](https://docs.rs/aethel-sdk) ·
-  [docs.rs/aethel-vault](https://docs.rs/aethel-vault)
+  [docs.rs/aethel-vault](https://docs.rs/aethel-vault) ·
+  [docs.rs/aethel-auth](https://docs.rs/aethel-auth)
 * Questions, bugs, or something that does not run: open an issue, or
   hello@0x307.com
 
