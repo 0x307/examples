@@ -1,0 +1,21 @@
+[package]
+name       = "ex05-x402-seller-identity"
+version    = "0.1.0"
+edition.workspace    = true
+license.workspace    = true
+repository.workspace = true
+publish              = false
+
+[dependencies]
+# The seller (src/gate.rs) uses only aethel-auth's verifier API. `holder` is on
+# because the demo also plays the owner and the agent, who sign.
+aethel-auth = { workspace = true, features = ["holder"] }
+aethel-core = { workspace = true }
+
+x402-axum  = "2.0.2"
+x402-types = "2.0.2"
+axum       = "0.8"
+tower      = { version = "0.5", features = ["util"] }
+tokio      = { version = "1", features = ["macros", "rt"] }
+serde_json = "1"
+sha2       = "0.10"
