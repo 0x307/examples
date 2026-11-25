@@ -40,3 +40,17 @@ jobs:
       # Example 05 also keeps its full set of refusal cases as tests.
       - name: Test
         run: cargo test --workspace --locked
+
+  seller-starter:
+    # Example 06 is JavaScript and needs the testnet for a real paid check, so CI runs only its offline checks.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Syntax and offline tests
+        working-directory: 06-seller-starter
+        run: |
+          node --check src/index.js
+          node --test

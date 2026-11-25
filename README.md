@@ -22,6 +22,7 @@ cargo run -p ex01-pqc-digital-signatures
 | [03](03-anonymous-agent-identity) | `aethel-sdk` | Per-context identity projection — unlinkable identifiers instead of one static DID |
 | [04](04-x402-vault-micropayments) | `aethel-vault` | Policy-gated EIP-3009 / x402 USDC authorization with a real `k256` signer |
 | [05](05-x402-seller-identity) | `aethel-auth` | An x402-axum seller that checks the agent's delegation from its owner, and refuses before it serves or charges |
+| [06](06-seller-starter) | `@0x307/aethel-verify` | A Cloudflare Worker seller that checks agents with Aethel Verify and pays per check (Base Sepolia testnet) |
 
 ## What these crates are and are not
 

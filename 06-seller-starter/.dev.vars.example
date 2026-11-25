@@ -1,0 +1,3 @@
+# Copy to .dev.vars for `wrangler dev`. Never commit .dev.vars.
+RP_SEED="paste the contents of the seed file from `aethel-verify keygen`"
+PAYER_PRIVATE_KEY="paste the contents of the wallet file from `aethel-verify wallet new`"
