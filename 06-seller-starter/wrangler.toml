@@ -1,0 +1,33 @@
+# Starter seller for Aethel Verify (Base Sepolia testnet only). Copy this folder, then see README.md.
+name = "my-aethel-seller"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[vars]
+# The audience your agents' delegations name: your API's public URL, exactly as agents write it.
+AUDIENCE = "https://my-seller.example/api"
+# "log" serves every request and reports the decision in a header. Change to "require" to refuse
+# requests the check does not approve (see README.md, "Switch to require").
+MODE = "log"
+# Owners you accept: comma-separated owner public keys. Empty accepts nobody.
+OWNER_KEYS = ""
+
+# Secrets, set with `wrangler secret put` (never in this file):
+#   RP_SEED            your seller identity: `npx aethel-verify keygen --out seed.txt`, then put the file's contents
+#   PAYER_PRIVATE_KEY  the test wallet that pays per check: `npx aethel-verify wallet new --out wallet.key`
+
+[[durable_objects.bindings]]
+name = "SELLER_STATE"
+class_name = "SellerState"
+
+[[durable_objects.bindings]]
+name = "SELLER_PAYER"
+class_name = "SellerPayer"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["SellerState"]
+
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["SellerPayer"]
