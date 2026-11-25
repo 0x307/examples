@@ -9,6 +9,8 @@ AUDIENCE = "https://my-seller.example/api"
 # "log" serves every request and reports the decision in a header. Change to "require" to refuse
 # requests the check does not approve (see README.md, "Switch to require").
 MODE = "log"
+# The payer pays only on Base Sepolia (testnet). It refuses to start without this exact value.
+PAYER_NETWORK = "sepolia"
 # Owners you accept: comma-separated owner public keys. Empty accepts nobody.
 OWNER_KEYS = ""
 

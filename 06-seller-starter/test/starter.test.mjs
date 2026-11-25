@@ -29,6 +29,11 @@ test("a mistyped MODE is refused, never read as log (control: both valid values 
   assert.match(src, /mode: env\.MODE/);
 });
 
+test("the payer is told its network (without it the paid check fails with PayerNotConfigured)", () => {
+  assert.match(toml, /^PAYER_NETWORK = "sepolia"$/m);
+  assert.doesNotMatch(toml.replace(/^PAYER_NETWORK.*$/m, ""), /^PAYER_NETWORK/m, "control: the check sees the line only when it is there");
+});
+
 test("it is testnet only", () => {
   assert.match(src, /network: "sepolia"/);
   assert.doesNotMatch(src, /mainnet/);
